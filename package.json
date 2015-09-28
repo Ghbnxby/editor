@@ -20,10 +20,12 @@
   },
   "scripts": {
     "prestart": "npm install",
-    "start": "gulp watch",
+    "start": "gulp default",
     "poststart": "http-server -a localhost -p 8000 -o"
   },
   "dependencies" : {
+    "connect": "^3.4.0",
+    "serve-static": "^1.10.0",
     "react": "^0.13.3",
     "gulp": "^3.9.0 ",
     "gulp-sourcemaps": "^1.5.2",

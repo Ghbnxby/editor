@@ -5,9 +5,11 @@ var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var watchify = require('watchify');
 var babel = require('babelify');
+var connect = require('connect');
+var serveStatic = require('serve-static');
 
 function compile(watch) {
-  var bundler = watchify(browserify('./src/app/app.js', { debug: true }).transform(babel));
+  var bundler = watchify(browserify('./src/app/app.js', { standalone: "helloModule",debug: true }).transform(babel));
 
   function rebundle() {
     bundler.bundle()
@@ -35,12 +37,17 @@ function watch() {
 
 gulp.task('http-server', function() {
   connect()
-    .use(connect.static('./src/www/index.html'))
-    .listen('8000');
+    .use(serveStatic('./src/www'))
+    .use(serveStatic('./build'))
+    .listen('3000');
 });
 
+
+gulp.task('watch-html', function() {
+
+});
 
 gulp.task('build', function() { return compile(); });
 gulp.task('watch', function() { return watch(); });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'http-server']);

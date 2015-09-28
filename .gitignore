@@ -75,4 +75,4 @@ eclipse
 web-app/WEB-INF/tld/fmt.tld
 workarea/
 node_modules/
-buils/
+build/
