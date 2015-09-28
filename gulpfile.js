@@ -42,11 +42,6 @@ gulp.task('http-server', function() {
     .listen('3000');
 });
 
-
-gulp.task('watch-html', function() {
-
-});
-
 gulp.task('build', function() { return compile(); });
 gulp.task('watch', function() { return watch(); });
 

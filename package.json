@@ -20,8 +20,7 @@
   },
   "scripts": {
     "prestart": "npm install",
-    "start": "gulp default",
-    "poststart": "http-server -a localhost -p 8000 -o"
+    "start": "gulp default"
   },
   "dependencies" : {
     "connect": "^3.4.0",
