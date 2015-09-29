@@ -9,7 +9,7 @@ var connect = require('connect');
 var serveStatic = require('serve-static');
 
 function compile(watch) {
-  var bundler = watchify(browserify('./src/app/app.js', { standalone: "helloModule",debug: true }).transform(babel));
+  var bundler = watchify(browserify('./src/app/app.js', { standalone: "ProductEditorModule",debug: true }).transform(babel, { stage: 0 }));
 
   function rebundle() {
     bundler.bundle()

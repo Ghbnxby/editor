@@ -1,10 +1,14 @@
 <html>
   <head>
     <title>Start</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   </head>
   <body>
+  <div class="container">
+    <h1>Product Editor</h1>
     <div id="reactContent"></div>
+  </div>
     <script src="./build.js"></script>
-    <script>helloModule.hello(document.getElementById("reactContent"), {})</script>
+    <script>ProductEditorModule.renderProductEditor(document.getElementById("reactContent"), {})</script>
   </body>
 </html>
