@@ -34,7 +34,8 @@
     "watchify": "^3.4.0",
     "babelify": "^6.3.0",
     "http-server": "^0.8.5",
-    "react-bootstrap": "^0.25.2"
+    "react-bootstrap": "^0.25.2",
+    "redux": "^3.0.2"
   },
   "homepage": "https://github.com/Ghbnxby/reactjs-template#readme"
 }

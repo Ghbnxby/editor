@@ -1,5 +1,5 @@
 import React from "react";
-import {Input, ButtonInput} from "react-bootstrap";
+import {Input} from "react-bootstrap";
 
 export default class ProductTabContent extends React.Component{
   render(){
