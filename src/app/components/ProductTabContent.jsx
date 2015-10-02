@@ -14,9 +14,10 @@ export default class ProductTabContent extends React.Component{
         <div className="col-sm-6">
           <Input type="textarea" label="Short Description"/>
           <Input type="textarea" label="Long Description"/>
-          <Input type="select" label="Is Serchable">
-            <option value="false">no</option>
-            <option value="true">yes</option>
+          <Input type="select" label="Status">
+            <option value="false">New</option>
+            <option value="true">Active</option>
+            <option value="true">Old</option>
           </Input>
         </div>
       </div>
