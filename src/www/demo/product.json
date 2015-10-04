@@ -1,8 +1,23 @@
 {
     "product": {
-        "attributeValue":{
-            "size": "44",
-            "color": "yellow"
-        }
+        "productId": "glass2015_1",
+        "catalogId": "winter2015",
+        "classificationId": "accesuar",
+        "classificationGroupId": "glass",
+        "statusId": "new",
+        "quantity": "10",
+        "manufacture": "nike",
+        "shortDescription": "short",
+        "longDescription": "long",
+        "price": {
+            "value": "235000",
+            "discount": "10"
+        },
+        "attributeValues": [
+            {
+                "attributeId": "color",
+                "value": "yellow"
+            }
+        ]
     }
 }
