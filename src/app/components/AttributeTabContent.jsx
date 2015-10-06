@@ -6,7 +6,7 @@ import {Input, Table} from "react-bootstrap";
 export default class AttributeTabContent extends React.Component{
   render(){
     return(
-      <div className="col-sm-12">
+      <div className="col-sm-12" style={{marginTop: "20px"}}>
         <Table responsive>
           <thead>
           <tr>

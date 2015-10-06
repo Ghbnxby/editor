@@ -4,7 +4,7 @@ import {Input} from "react-bootstrap";
 export default class ProductTabContent extends React.Component{
   render(){
     return(
-      <div>
+      <div style={{marginTop: "20px"}}>
         <div className="col-sm-6">
           <Input type="text" label="ProductId" value={this.props.productId} onChange={this.changeProductId}/>
           <Input type="text" label="Catalog" value={this.props.catalogId} onChange={this.changeCatalogId}/>

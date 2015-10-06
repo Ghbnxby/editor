@@ -16,7 +16,8 @@ function mapStateToProps(state) {
     manufacture: state.manufacture,
     price: state.price,
     quantity: state.quantity,
-    status: state.status
+    status: state.status,
+    classifications: state.classifications
   };
 }
 

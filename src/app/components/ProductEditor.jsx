@@ -8,10 +8,10 @@ export default class ProductEditor extends React.Component{
 
   constructor(props){
     super(props);
-    let {product} = props.data;
+    let {product, classifications} = props.data;
     props.updateProductId(product.productId);
-    props.updatePrice(product.price.value);
-    props.updateDiscount(product.price.discount);
+    props.updatePrice(product.price ? product.price.value : 0);
+    props.updateDiscount(product.price ? product.price.discount : 0);
     props.updateManufacture(product.manufacture);
     props.updateClassification(product.classificationId);
     props.updateStatus(product.statusId);
@@ -21,5 +21,6 @@ export default class ProductEditor extends React.Component{
     props.updateLongDescription(product.longDescription);
     props.updateQuantity(product.quantity);
     props.updateCatalogId(product.catalogId);
+    props.updateClassifications(classifications);
   }
 }

@@ -10,6 +10,7 @@ export const UPDATE_SHORTDESCRIPTION = "UPDATE_SHORTDESCRIPTION";
 export const UPDATE_LONGDESCRIPTION = "UPDATE_LONGDESCRIPTION";
 export const UPDATE_STATUS = "UPDATE_STATUS";
 export const UPDATE_QUANTITY = "UPDATE_QUANTITY";
+export const UPDATE_CLASSIFICATIONS = "UPDATE_CLASSIFICATIONS";
 
 export function updateProductId(value) {
   return {type: UPDATE_PRODUCTID, value: value};
@@ -59,3 +60,6 @@ export function updateQuantity(value) {
   return {type: UPDATE_QUANTITY, value: value};
 }
 
+export function updateClassifications(array) {
+  return {type: UPDATE_CLASSIFICATIONS, array: array};
+}

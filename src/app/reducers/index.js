@@ -3,6 +3,7 @@ import productId from './productId';
 import attributeValue from './attributeValue';
 import catalogId from './catalogId';
 import classification from './classification';
+import classifications from './classifications';
 import classificationGroup from './classificationGroup';
 import discount from './discount';
 import longDescription from './longDescription';
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
 	price,
 	quantity,
 	shortDescription,
-	status
+	status,
+	classifications
 });
 
 export default rootReducer;

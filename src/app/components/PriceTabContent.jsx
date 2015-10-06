@@ -4,7 +4,7 @@ import {Input} from "react-bootstrap";
 export default class PriceTabContent extends React.Component{
   render(){
     return(
-      <div>
+      <div style={{marginTop: "20px"}}>
         <div className="col-sm-6">
           <Input type="text" label="Price" value={this.props.price} onChange={this.changePrice}/>
         </div>
