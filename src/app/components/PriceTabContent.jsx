@@ -17,9 +17,9 @@ export default class PriceTabContent extends React.Component{
 
   changePrice = (e) => {
     this.props.updatePrice(e.target.value);
-  }
+  };
 
   changeDiscount = (e) => {
     this.props.updateDiscount(e.target.value);
-  }
+  };
 }

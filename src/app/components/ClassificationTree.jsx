@@ -16,11 +16,11 @@ export default class ClassificationTree extends React.Component{
             let glyphicon;
             let className = "list-group-item";
             if(classificationGroup.show) node = self.renderNode(classificationGroup.classificationGroups, level);
-            if(classificationGroup.classificationGroups) glyphicon = (<Glyphicon glyph={classificationGroup.show ? "menu-down" : "menu-right"}/>);
-            if(classificationGroup.classificationGroupId === self.props.classificationGroup) className = className + " " + "list-group-item-info";
+            if(classificationGroup.classificationGroups) glyphicon = (<Glyphicon key={"g" + classification.classificationId} glyph={classificationGroup.show ? "menu-down" : "menu-right"}/>);
+            if(classificationGroup.classificationGroupId === self.props.classificationGroup) className = className + " " + "list-group-item-info selected";
             return(
-              <div>
-                <Button key={classificationGroup.classificationGroupId} className={className} style={style} onClick={() => {self.updateClassificationGroup(classificationGroup)}}>
+              <div key={"d" + classification.classificationId}>
+                <Button key={"b" + classificationGroup.classificationGroupId} className={className} style={style} onClick={() => {self.updateClassificationGroup(classificationGroup)}}>
                   {glyphicon}
                   {classificationGroup.description}
                 </Button>
@@ -33,6 +33,7 @@ export default class ClassificationTree extends React.Component{
     )
   };
 
+
   render(){
     let self = this;
     return(
@@ -43,11 +44,11 @@ export default class ClassificationTree extends React.Component{
             let glyphicon;
             let className = "list-group-item";
             if(classification.show) node = self.renderNode(classification.classificationGroups, 0);
-            if(classification.classificationGroups) glyphicon = (<Glyphicon glyph={classification.show ? "menu-down" : "menu-right"}/>);
-            if(this.checkClassification(classification)) className = className + " " + "list-group-item-info";
+            if(classification.classificationGroups) glyphicon = (<Glyphicon key={"g" + classification.classificationId} glyph={classification.show ? "menu-down" : "menu-right"}/>);
+            if(this.checkClassification(classification)) className = className + " " + "list-group-item-info selected";
             return(
-              <div>
-                <Button key={classification.classificationId} className={className} onClick={() => self.updateClassification(classification)}>
+              <div key={"d" + classification.classificationId}>
+                <Button key={"b" + classification.classificationId} className={className} onClick={() => self.updateClassification(classification)}>
                   {glyphicon}
                   {classification.description}
                 </Button>
