@@ -1,5 +1,4 @@
 import React from "react";
-import {Input, Table} from "react-bootstrap";
 import ReactDataGrid from "react-data-grid/addons.js";
 
 export default class AttributeTabContent extends React.Component{
