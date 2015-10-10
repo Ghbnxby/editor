@@ -1,34 +1,8 @@
 {
     "product": {
-        "productId": "glass2015_1",
-        "catalogId": "winter2015",
-        "classificationId": "accesuar",
-        "classificationGroupId": "glass",
-        "statusId": "new",
-        "manufacturer": "nike",
-        "description": "short",
-        "longDescription": "long",
-        "price": {
-            "value": "235000",
-            "discountPercent": "10",
-            "discountValue": ""
-        },
-        "attributeValues": [
-            {
-                "attributeId": "color",
-                "description": "Color",
-                "value": "yellow",
-                "isMultivalue": "true",
-                "type": "string"
-            },
-            {
-                "attributeId": "size",
-                "description": "Size",
-                "value": "42",
-                "isMultivalue": "true",
-                "type": "string"
-            }
-
-        ]
+        "attributeValue":{
+            "size": "44",
+            "color": "yellow"
+        }
     }
 }
