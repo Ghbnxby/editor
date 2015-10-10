@@ -17,7 +17,7 @@ export default class ClassificationTree extends React.Component{
             let className = "list-group-item";
             if(classificationGroup.show) node = self.renderNode(classificationGroup.classificationGroups, level);
             if(classificationGroup.classificationGroups) glyphicon = (<Glyphicon key={"g" + classificationGroup.classificationGroupId} glyph={classificationGroup.show ? "menu-down" : "menu-right"}/>);
-            if(classificationGroup.classificationGroupId === self.props.classificationGroup) className = className + " " + "list-group-item-info selected";
+            if(classificationGroup.classificationGroupId === self.props.product.classificationGroupId) className = className + " " + "list-group-item-info selected";
             return(
               <div key={"d" + classificationGroup.classificationGroupId}>
                 <Button key={"b" + classificationGroup.classificationGroupId} className={className} style={style} onClick={() => {self.updateClassificationGroup(classificationGroup)}}>
@@ -63,8 +63,7 @@ export default class ClassificationTree extends React.Component{
 
   static propTypes = {
     classifications: React.PropTypes.array,
-    classificationId: React.PropTypes.string,
-    classificationGroup: React.PropTypes.string
+    product: React.PropTypes.object
   };
 
   constructor(props){
@@ -138,12 +137,12 @@ export default class ClassificationTree extends React.Component{
   };
 
   updateClsAndClsGrp = (clsId, clsGrpId) => {
-    this.props.updateClassification(clsId);
-    this.props.updateClassificationGroup(clsGrpId);
+    this.props.updateClassificationId(clsId);
+    this.props.updateClassificationGroupId(clsGrpId);
   };
 
   checkClassification = (cls) => {
-    return cls.classificationId === this.props.classification && this.props.classificationGroup === ""
+    return cls.classificationId === this.props.product.classificationId && this.props.product.classificationGroupId === ""
   };
 
 }

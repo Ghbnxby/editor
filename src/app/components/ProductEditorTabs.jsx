@@ -29,6 +29,11 @@ export default class ProductEditorTab extends React.Component{
     );
   };
 
+  static propTypes = {
+    product: React.PropTypes.object,
+    classifications: React.PropTypes.array
+  };
+
   constructor(props){
     super(props);
     this.state = {key: 1};
@@ -36,9 +41,5 @@ export default class ProductEditorTab extends React.Component{
 
   handleSelect = (key) => {
     this.setState({key: key});
-  };
-
-  handleSave = () => {
-    console.log(this.props);
   };
 }

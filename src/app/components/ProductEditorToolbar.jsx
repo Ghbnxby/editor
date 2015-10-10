@@ -17,4 +17,12 @@ export default class ProductEditorToolbar extends React.Component{
       </div>
     )
   };
+
+  static propTypes = {
+    product: React.PropTypes.object
+  };
+
+  handleSave = () => {
+    console.log(this.props);
+  };
 }

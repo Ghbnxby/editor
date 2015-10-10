@@ -19,12 +19,12 @@ export default class QuantityTabContent extends React.Component{
 
   constructor(props){
     super(props);
-    let columns = this.initColumns(props.attributeValue);
+    let columns = this.initColumns(props.product.attributeValues);
     this.state = {columns: columns};
   }
 
   componentWillReceiveProps = (nextProps) => {
-    let columns = this.initColumns(nextProps.attributeValue);
+    let columns = this.initColumns(nextProps.product.attributeValues);
     this.setState({columns: columns});
   };
 
@@ -39,9 +39,9 @@ export default class QuantityTabContent extends React.Component{
 
   handleRowUpdated = (e) => {
     //merge updated row with current row and rerender by setting state
-    var attributeValues = this.props.attributeValue;
+    var attributeValues = this.props.product.attributeValues;
     Object.assign(attributeValues[e.rowIdx], e.updated);
-    this.props.updateAttributeValue(attributeValues);
+    this.props.updateAttributeValues(attributeValues);
   };
 
 

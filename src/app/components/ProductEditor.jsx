@@ -6,9 +6,14 @@ export default class ProductEditor extends React.Component{
   render(){
     return(
       <div>
-        <ProductEditorTabs/>
-        <ProductEditorToolbar/>
+        <ProductEditorTabs {...this.props}/>
+        <ProductEditorToolbar {...this.props}/>
       </div>
     )
+  };
+
+  static propTypes = {
+    product: React.PropTypes.object,
+    classifications: React.PropTypes.array
   };
 }

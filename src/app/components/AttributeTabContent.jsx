@@ -8,7 +8,7 @@ export default class AttributeTabContent extends React.Component{
         enableCellSelect={true}
         columns={this.columns}
         rowGetter={this.rowGetter}
-        rowsCount={this.props.attributeValue.length}
+        rowsCount={this.props.product.attributeValues.length}
         onRowUpdated={this.handleRowUpdated}
         />
     )
@@ -39,14 +39,14 @@ export default class AttributeTabContent extends React.Component{
 
   handleRowUpdated = (e) => {
     //merge updated row with current row and rerender by setting state
-    var attributeValues = this.props.attributeValue;
+    var attributeValues = this.props.product.attributeValues;
     Object.assign(attributeValues[e.rowIdx], e.updated);
-    this.props.updateAttributeValue(attributeValues);
+    this.props.updateAttributeValues(attributeValues);
   };
 
 
   rowGetter = (i) => {
-    return this.props.attributeValue[i];
+    return this.props.product.attributeValues[i];
   };
 
 }

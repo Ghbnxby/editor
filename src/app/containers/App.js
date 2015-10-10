@@ -15,20 +15,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(ProductActions, dispatch);
 }
 
-function bindStateToClassificationTree(state){
-  return {
-    classifications: state.classifications,
-    classificationId: state.product.classificationId,
-    classificationGroupId: state.product.classificationGroupId
-  }
-};
-
-function bindActionsToClassificationTree(dispatch){
-  let {updateClassificationId, updateClassificationGroupId} = ProductActions;
-  return bindActionCreators({updateClassificationId, updateClassificationGroupId}, dispatch);
-};
-
 export default{
-  ProductEditor: ProductEditor,
-  ClassificationTree: connect(bindStateToClassificationTree, bindActionsToClassificationTree)(ClassificationTree)
+  ProductEditor: connect(mapStateToProps, mapDispatchToProps)(ProductEditor)
+
 }
