@@ -1,23 +1,7 @@
 <html>
   <head>
     <title>Start</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/react-data-grid.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <style>
-      * {
-        border-radius: 0 !important;
-      }
-
-      .list-group-item:hover{
-        border-left-color: #337ab7;
-      }
-
-      .list-group-item-info.selected{
-        border-left-color: #337ab7;
-      }
-    </style>
   </head>
   <body>
   <div class="container">
@@ -25,11 +9,6 @@
     <div id="reactContent"></div>
   </div>
     <script src="./build.js"></script>
-    <script>
-      $.when($.getJSON("demo/product.json"), $.getJSON("demo/classifications.json"))
-       .then(function(prd, cls){
-            ProductEditorModule.renderProductEditor(document.getElementById("reactContent"), {data: {product: prd[0].product, classifications: cls[0].classifications}})
-       });
-    </script>
+    <script>ProductEditorModule.renderProductEditor(document.getElementById("reactContent"), {})</script>
   </body>
 </html>
