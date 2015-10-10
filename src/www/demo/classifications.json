@@ -1,0 +1,60 @@
+{
+  "classifications":[
+    {
+      "classificationId": "shoes",
+      "description": "Shoes",
+      "classificationGroups":[
+        {
+          "classificationGroupId": "sneakers",
+          "description": "Sneakers",
+          "classificationId": "shoes"
+        },
+        {
+          "classificationGroupId": "gymshoes",
+          "description": "Gymshoes",
+          "classificationId": "shoes"
+        }
+      ]
+    },
+    {
+      "classificationId": "clothing",
+      "description": "Clothing",
+      "classificationId": "clothing",
+      "classificationGroups":[
+        {
+          "classificationGroupId": "shirts",
+          "description": "Shirts",
+          "classificationId": "clothing"
+        },
+        {
+          "classificationGroupId": "jeans",
+          "description": "Jeans",
+          "classificationId": "clothing",
+          "classificationGroups":[
+            {
+              "classificationGroupId": "normal-jeans",
+              "description": "Normal jeans",
+              "classificationId": "clothing"
+            },
+            {
+              "classificationGroupId": "skinny-jeans",
+              "description": "Skinny jeans",
+              "classificationId": "clothing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classificationId": "accessories",
+      "description": "Accessories",
+      "classificationGroups":[
+        {
+          "classificationGroupId": "glasses",
+          "description": "Glasses",
+          "classificationId": "accessories"
+        }
+      ]
+    }
+  ]
+}

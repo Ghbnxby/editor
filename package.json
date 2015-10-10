@@ -35,7 +35,10 @@
     "babelify": "^6.3.0",
     "http-server": "^0.8.5",
     "react-bootstrap": "^0.25.2",
-    "redux": "^3.0.2"
+    "redux": "^3.0.2",
+    "redux-thunk": "^0.1.0",
+    "react-redux": "^2.1.2",
+    "react-data-grid": "^0.13.10"
   },
   "homepage": "https://github.com/Ghbnxby/reactjs-template#readme"
 }

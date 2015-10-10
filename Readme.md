@@ -25,7 +25,7 @@ It's template for creation web-application , based on ReactJS and using ECMA6 no
               "classificationGroupId": "glass",
               "statusId": "new",
               "quantity": "10",
-              "manufacturer": "nike"
+              "manufacture": "nike"
               "price": { 
                     "value": "235000",
                     "discount": "10"
