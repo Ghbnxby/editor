@@ -2,8 +2,7 @@ export const UPDATE_PRODUCTID = "UPDATE_PRODUCTID";
 export const UPDATE_ATTRIBUTEVALUES = "UPDATE_ATTRIBUTEVALUES";
 export const UPDATE_MANUFACTURER = "UPDATE_MANUFACTURER";
 export const UPDATE_PRICE = "UPDATE_PRICE";
-export const UPDATE_CLASSIFICATIONID = "UPDATE_CLASSIFICATION";
-export const UPDATE_CLASSIFICATIONGROUPID = "UPDATE_CLASSIFICATIONGROUP";
+export const UPDATE_CLSIDANDCLSGRPID = "UPDATE_CLSIDANDCLSGRPID";
 export const UPDATE_CATALOGID = "UPDATE_CATALOGID";
 export const UPDATE_DESCRIPTION = "UPDATE_DESCRIPTION";
 export const UPDATE_LONGDESCRIPTION = "UPDATE_LONGDESCRIPTION";
@@ -25,12 +24,8 @@ export function updatePrice(value) {
   return {type: UPDATE_PRICE, price: value};
 }
 
-export function updateClassificationId(value) {
-  return {type: UPDATE_CLASSIFICATIONID, value: value};
-}
-
-export function updateClassificationGroupId(value) {
-  return {type: UPDATE_CLASSIFICATIONGROUPID, value: value};
+export function updateClsIdAndClsGrpId(classificationId, classificationGroupId) {
+  return {type: UPDATE_CLSIDANDCLSGRPID, classificationId: classificationId, classificationGroupId: classificationGroupId};
 }
 
 export function updateCatalogId(value) {

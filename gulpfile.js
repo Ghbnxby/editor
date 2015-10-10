@@ -10,6 +10,7 @@ var serveStatic = require('serve-static');
 
 function compile(watch) {
   var bundler = watchify(browserify('./src/app/app.js', { standalone: "ProductEditorModule",debug: true }).transform(babel, { stage: 0 }));
+  var version = 0;
 
   function rebundle() {
     bundler.bundle()
@@ -19,6 +20,8 @@ function compile(watch) {
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest('./build'));
+    console.log('Rebuild version: ' + version);
+    version = version + 1;
   }
 
   if (watch) {
@@ -37,7 +40,7 @@ function watch() {
 
 gulp.task('http-server', function() {
   connect()
-    .use(serveStatic('./src/www'))
+    .use(serveStatic('./src/www', {extensions: ['json']}))
     .use(serveStatic('./build'))
     .listen('3000');
 });

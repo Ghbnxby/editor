@@ -44,9 +44,9 @@ export default class QuantityTabContent extends React.Component{
     this.props.updateAttributeValues(attributeValues);
   };
 
-
   rowGetter = (i) => {
     return {"quantity": 0, "size": 42, "color": "yellow"};//this.props.attributeValue[i];
   };
 
+  handleAddRow = (e) => {}
 }

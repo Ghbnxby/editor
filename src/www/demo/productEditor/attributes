@@ -1,0 +1,15 @@
+[
+  {
+    "attributeId": "color",
+    "description": "Color",
+    "isMultivalue": "true",
+    "type": "string"
+  },
+  {
+    "attributeId": "size",
+    "description": "Size",
+    "isMultivalue": "true",
+    "type": "string",
+    "options": ["XS", "S", "M", "L", "XL", "XXL", "XXXL"]
+  }
+]

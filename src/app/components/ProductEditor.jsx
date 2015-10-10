@@ -16,4 +16,9 @@ export default class ProductEditor extends React.Component{
     product: React.PropTypes.object,
     classifications: React.PropTypes.array
   };
+
+  constructor(props){
+    super(props);
+    window.tt = this;
+  }
 }

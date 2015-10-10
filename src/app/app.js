@@ -7,7 +7,6 @@ function renderProductEditor(element, props){
   let {product, classifications} = props.data;
   let initialState = {product, classifications};
   let store = configureStore(initialState);
-  window.stor = store;
   return React.render(
     <Provider store={store}>
       {() => <ProductEditor {...props}/>}

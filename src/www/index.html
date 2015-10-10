@@ -28,7 +28,7 @@
     <script>
       $.when($.getJSON("demo/product.json"), $.getJSON("demo/classifications.json"))
        .then(function(prd, cls){
-            ProductEditorModule.renderProductEditor(document.getElementById("reactContent"), {data: {product: prd[0].product, classifications: cls[0].classifications}})
+            ProductEditorModule.renderProductEditor(document.getElementById("reactContent"), {data: {product: prd[0].product, classifications: cls[0].classifications}, contextPath: "demo"});
        });
     </script>
   </body>

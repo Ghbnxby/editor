@@ -1,5 +1,6 @@
 import React from "react";
 import {Button, Glyphicon} from "react-bootstrap";
+import DataUtil from "../services/DataUtil";
 
 export default class ClassificationTree extends React.Component{
 
@@ -33,7 +34,6 @@ export default class ClassificationTree extends React.Component{
     )
   };
 
-
   render(){
     let self = this;
     return(
@@ -44,11 +44,11 @@ export default class ClassificationTree extends React.Component{
             let glyphicon;
             let className = "list-group-item";
             if(classification.show) node = self.renderNode(classification.classificationGroups, 0);
-            if(classification.classificationGroups) glyphicon = (<Glyphicon key={"g" + classification.classificationId} glyph={classification.show ? "menu-down" : "menu-right"}/>);
+            if(classification.classificationGroups) glyphicon = (<Glyphicon glyph={classification.show ? "menu-down" : "menu-right"}/>);
             if(this.checkClassification(classification)) className = className + " " + "list-group-item-info selected";
             return(
               <div key={"d" + classification.classificationId}>
-                <Button key={"b" + classification.classificationId} className={className} onClick={() => self.updateClassification(classification)}>
+                <Button className={className} onClick={() => self.updateClassification(classification)}>
                   {glyphicon}
                   {classification.description}
                 </Button>
@@ -69,6 +69,7 @@ export default class ClassificationTree extends React.Component{
   constructor(props){
     super(props);
     this.state = {classifications: props.classifications};
+    this.dataUtil = new DataUtil(props.contextPath);
   }
 
   componentWillReceiveProps(nextProps){
@@ -137,8 +138,8 @@ export default class ClassificationTree extends React.Component{
   };
 
   updateClsAndClsGrp = (clsId, clsGrpId) => {
-    this.props.updateClassificationId(clsId);
-    this.props.updateClassificationGroupId(clsGrpId);
+    this.props.updateClsIdAndClsGrpId(clsId, clsGrpId);
+    this.dataUtil.updateAttributes(clsId, clsGrpId, this.props.updateAttributes);
   };
 
   checkClassification = (cls) => {

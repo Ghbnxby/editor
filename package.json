@@ -38,7 +38,8 @@
     "redux": "^3.0.2",
     "redux-thunk": "^0.1.0",
     "react-redux": "^2.1.2",
-    "react-data-grid": "^0.13.10"
+    "react-data-grid": "^0.13.10",
+    "jquery": "^2.1.4"
   },
   "homepage": "https://github.com/Ghbnxby/reactjs-template#readme"
 }

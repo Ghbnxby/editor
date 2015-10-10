@@ -1,8 +1,7 @@
 import {
   UPDATE_PRODUCTID,
   UPDATE_CATALOGID,
-  UPDATE_CLASSIFICATIONID,
-  UPDATE_CLASSIFICATIONGROUPID,
+  UPDATE_CLSIDANDCLSGRPID,
   UPDATE_STATUSID,
   UPDATE_DESCRIPTION,
   UPDATE_LONGDESCRIPTION,
@@ -34,13 +33,10 @@ export default function product(product = initialState, action) {
       return Object.assign({}, product, {
         catalogId: action.value
       });
-    case UPDATE_CLASSIFICATIONID:
+    case UPDATE_CLSIDANDCLSGRPID:
       return Object.assign({}, product, {
-        classificationId: action.value
-      });
-    case UPDATE_CLASSIFICATIONGROUPID:
-      return Object.assign({}, product, {
-        classificationGroupId: action.value
+        classificationId: action.classificationId,
+        classificationGroupId: action.classificationGroupId
       });
     case UPDATE_STATUSID:
       return Object.assign({}, product, {
