@@ -1,4 +1,4 @@
-import { UPDATE_CLASSIFICATIONS } from '../actions/product';
+import { UPDATE_CLASSIFICATIONS } from '../actions/classifications';
 
 export default function classifications(classifications = [], action) {
   switch (action.type) {

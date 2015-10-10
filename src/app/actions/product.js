@@ -1,65 +1,50 @@
 export const UPDATE_PRODUCTID = "UPDATE_PRODUCTID";
-export const UPDATE_ATTRIBUTEVALUE = "UPDATE_ATTRIBUTEVALUE";
-export const UPDATE_MANUFACTURE = "UPDATE_MANUFACTURE";
+export const UPDATE_ATTRIBUTEVALUES = "UPDATE_ATTRIBUTEVALUES";
+export const UPDATE_MANUFACTURER = "UPDATE_MANUFACTURER";
 export const UPDATE_PRICE = "UPDATE_PRICE";
-export const UPDATE_DISCOUNT = "UPDATE_DISCOUNT";
-export const UPDATE_CLASSIFICATION = "UPDATE_CLASSIFICATION";
-export const UPDATE_CLASSIFICATIONGROUP = "UPDATE_CLASSIFICATIONGROUP";
+export const UPDATE_CLASSIFICATIONID = "UPDATE_CLASSIFICATION";
+export const UPDATE_CLASSIFICATIONGROUPID = "UPDATE_CLASSIFICATIONGROUP";
 export const UPDATE_CATALOGID = "UPDATE_CATALOGID";
-export const UPDATE_SHORTDESCRIPTION = "UPDATE_SHORTDESCRIPTION";
+export const UPDATE_DESCRIPTION = "UPDATE_DESCRIPTION";
 export const UPDATE_LONGDESCRIPTION = "UPDATE_LONGDESCRIPTION";
-export const UPDATE_STATUS = "UPDATE_STATUS";
-export const UPDATE_QUANTITY = "UPDATE_QUANTITY";
-export const UPDATE_CLASSIFICATIONS = "UPDATE_CLASSIFICATIONS";
+export const UPDATE_STATUSID = "UPDATE_STATUS";
 
 export function updateProductId(value) {
   return {type: UPDATE_PRODUCTID, value: value};
 }
 
-export function updateAttributeValue(array) {
-  return {type: UPDATE_ATTRIBUTEVALUE, array: array};
+export function updateAttributeValues(array) {
+  return {type: UPDATE_ATTRIBUTEVALUES, array: array};
 }
 
-export function updateManufacture(value) {
-  return {type: UPDATE_MANUFACTURE, value: value};
+export function updateManufacturer(value) {
+  return {type: UPDATE_MANUFACTURER, value: value};
 }
 
 export function updatePrice(value) {
-  return {type: UPDATE_PRICE, value: value};
+  return {type: UPDATE_PRICE, price: value};
 }
 
-export function updateDiscount(value) {
-  return {type: UPDATE_DISCOUNT, value: value};
+export function updateClassificationId(value) {
+  return {type: UPDATE_CLASSIFICATIONID, value: value};
 }
 
-export function updateClassification(value) {
-  return {type: UPDATE_CLASSIFICATION, value: value};
-}
-
-export function updateClassificationGroup(value) {
-  return {type: UPDATE_CLASSIFICATIONGROUP, value: value};
+export function updateClassificationGroupId(value) {
+  return {type: UPDATE_CLASSIFICATIONGROUPID, value: value};
 }
 
 export function updateCatalogId(value) {
   return {type: UPDATE_CATALOGID, value: value};
 }
 
-export function updateShortDescription(value) {
-  return {type: UPDATE_SHORTDESCRIPTION, value: value};
+export function updateDescription(value) {
+  return {type: UPDATE_DESCRIPTION, value: value};
 }
 
 export function updateLongDescription(value) {
   return {type: UPDATE_LONGDESCRIPTION, value: value};
 }
 
-export function updateStatus(value) {
-  return {type: UPDATE_STATUS, value: value};
-}
-
-export function updateQuantity(value) {
-  return {type: UPDATE_QUANTITY, value: value};
-}
-
-export function updateClassifications(array) {
-  return {type: UPDATE_CLASSIFICATIONS, array: array};
+export function updateStatusId(value) {
+  return {type: UPDATE_STATUSID, value: value};
 }

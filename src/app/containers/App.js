@@ -1,22 +1,12 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ProductEditor from '../components/ProductEditor.jsx';
+import ClassificationTree from '../components/ClassificationTree.jsx';
 import * as ProductActions from '../actions/product';
 
 function mapStateToProps(state) {
   return {
-    productId: state.productId,
-    attributeValue: state.attributeValue,
-    catalogId: state.catalogId,
-    classification: state.classification,
-    classificationGroup: state.classificationGroup,
-    discount: state.discount,
-    longDescription: state.longDescription,
-    shortDescription: state.shortDescription,
-    manufacture: state.manufacture,
-    price: state.price,
-    quantity: state.quantity,
-    status: state.status,
+    product: state.product,
     classifications: state.classifications
   };
 }
@@ -25,6 +15,20 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(ProductActions, dispatch);
 }
 
+function bindStateToClassificationTree(state){
+  return {
+    classifications: state.classifications,
+    classificationId: state.product.classificationId,
+    classificationGroupId: state.product.classificationGroupId
+  }
+};
+
+function bindActionsToClassificationTree(dispatch){
+  let {updateClassificationId, updateClassificationGroupId} = ProductActions;
+  return bindActionCreators({updateClassificationId, updateClassificationGroupId}, dispatch);
+};
+
 export default{
-  ProductEditor: connect(mapStateToProps, mapDispatchToProps)(ProductEditor)
+  ProductEditor: ProductEditor,
+  ClassificationTree: connect(bindStateToClassificationTree, bindActionsToClassificationTree)(ClassificationTree)
 }

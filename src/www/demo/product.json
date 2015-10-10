@@ -5,13 +5,13 @@
         "classificationId": "accesuar",
         "classificationGroupId": "glass",
         "statusId": "new",
-        "quantity": "10",
-        "manufacture": "nike",
-        "shortDescription": "short",
+        "manufacturer": "nike",
+        "description": "short",
         "longDescription": "long",
         "price": {
             "value": "235000",
-            "discount": "10"
+            "discountPercent": "10",
+            "discountValue": ""
         },
         "attributeValues": [
             {

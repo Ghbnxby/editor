@@ -18,7 +18,7 @@ export default class AttributeTabContent extends React.Component{
     super(props);
     this.columns = [
       {
-        key: 'attributeId',
+        key: 'description',
         name: 'Attribute'
       },
       {

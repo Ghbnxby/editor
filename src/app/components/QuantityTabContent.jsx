@@ -1,15 +1,18 @@
 import React from "react";
 import ReactDataGrid from "react-data-grid/addons.js";
+import {Toolbar} from "react-data-grid/addons.js";
 
 export default class QuantityTabContent extends React.Component{
   render(){
     return(
-      <ReactDataGrid ref="grid"
+      <ReactDataGrid ref="rdg"
         enableCellSelect={true}
+        enableRowSelect={true}
         columns={this.state.columns}
         rowGetter={this.rowGetter}
         rowsCount={10}
         onRowUpdated={this.handleRowUpdated}
+        toolbar={<Toolbar onAddRow={this.handleAddRow}/>}
         />
     )
   };
@@ -25,16 +28,12 @@ export default class QuantityTabContent extends React.Component{
     this.setState({columns: columns});
   };
 
-  componentWillUpdate = ( nextProps,  nextState) =>{
-    console.log(nextState)
-  };
-
   initColumns = (attributeValues) => {
     let columns = [];
     attributeValues.forEach((value) => {
       columns.push({key: value.attributeId, name: value.description})
     });
-    columns.push({key: 'quantity', name: "Quantity"});
+    columns.push({key: 'quantity', name: "Quantity", editable: true});
     return columns;
   };
 
