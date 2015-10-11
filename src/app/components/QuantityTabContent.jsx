@@ -30,8 +30,10 @@ export default class QuantityTabContent extends React.Component{
 
   initColumns = (attributeValues) => {
     let columns = [];
+    let self = this;
     attributeValues.forEach((value) => {
-      columns.push({key: value.attributeId, name: value.description})
+      let attribute = self.getAttributeById(value.attributeId);
+      columns.push({key: attribute.attributeId, name: attribute.description})
     });
     columns.push({key: 'quantity', name: "Quantity", editable: true});
     return columns;
@@ -49,4 +51,8 @@ export default class QuantityTabContent extends React.Component{
   };
 
   handleAddRow = (e) => {}
+
+  getAttributeById = (id) => {
+    return this.props.attributes.filter((a) => {return a.attributeId === id})[0]
+  }
 }

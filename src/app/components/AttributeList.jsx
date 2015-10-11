@@ -22,7 +22,7 @@ export default class AttributeList extends React.Component{
                     <Well>
                       <ul className="list-group">
                         <li className="list-group-item active">Possible values</li>
-                        {attribute.options.map((v)=> {return (<li className="list-group-item">{v}</li>)})}
+                        {attribute.options.map((v)=> {return (<li className="list-group-item">{v.description ? v.description : v.value}</li>)})}
                       </ul>
                     </Well>
                   </div>

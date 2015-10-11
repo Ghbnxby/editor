@@ -10,12 +10,65 @@
     "description": "Size",
     "isMultivalue": "true",
     "type": "string",
-    "options": ["XS", "S", "M", "L", "XL", "XXL", "XXXL"]
+    "options": [
+        {
+            "value": "xs",
+            "description": "XS"
+        },
+        {
+            "value": "s",
+            "description": "S"
+        },
+        {
+            "value": "m",
+            "description": "M"
+        },
+        {
+            "value": "l",
+            "description": "L"
+        },
+        {
+            "value": "xl",
+            "description": "XL"
+        },
+        {
+            "value": "xxl",
+            "description": "XXL"
+        },
+        {
+            "value": "xxxl",
+            "description": "XXXL"
+        }
+      ]
   },
   {
       "attributeId": "style",
       "description": "Style",
       "isMultivalue": "false",
       "type": "string"
+  },
+  {
+      "attributeId": "season",
+      "description": "Season",
+      "isMultivalue": "true",
+      "type": "string",
+      "options": [
+        {
+            "value": "summer",
+            "description": "Summer"
+        },
+        {
+            "value": "winter",
+            "description": "Winter"
+        },
+        {
+            "value": "autumn",
+            "description": "Autumn"
+        },
+        {
+            "value": "spring",
+            "description": "Spring"
+        }
+      ]
   }
 ]

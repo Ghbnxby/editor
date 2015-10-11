@@ -19,11 +19,13 @@ export default class ProductEditorTab extends React.Component{
           <Tab eventKey={2} title={<h4>Classification</h4>}><ClassificationTabContent {...this.props}/></Tab>
           <Tab eventKey={3} title={<h4>Attributes</h4>}/>
           <Tab eventKey={4} title={<h4>Price</h4>}><PriceTabContent {...this.props}/></Tab>
-          <Tab eventKey={5} title={<h4>Quantity</h4>}></Tab>
+          <Tab eventKey={5} title={<h4>Quantity</h4>}/>
         </Tabs>
+        <div className="col-md-12" style={{paddingLeft: "0px", paddingRight: "0px"}}>
+          {attributeTab}
+        </div>
         <div className="col-md-12" style={{paddingLeft: "0px"}}>
           {quantityTab}
-          {attributeTab}
         </div>
       </div>
     );

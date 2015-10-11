@@ -16,11 +16,11 @@
         "attributeValues": [
             {
                 "attributeId": "color",
-                "value": "yellow"
+                "values": ["yellow", "red", "blue"]
             },
             {
                 "attributeId": "size",
-                "value": "42"
+                "values": ["M", "L"]
             }
 
         ]
