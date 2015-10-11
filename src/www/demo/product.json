@@ -21,6 +21,10 @@
             {
                 "attributeId": "size",
                 "values": ["M", "L"]
+            },
+            {
+                "attributeId": "style",
+                "values": ["Los"]
             }
 
         ]

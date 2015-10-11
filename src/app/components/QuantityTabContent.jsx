@@ -33,7 +33,9 @@ export default class QuantityTabContent extends React.Component{
     let self = this;
     attributeValues.forEach((value) => {
       let attribute = self.getAttributeById(value.attributeId);
-      columns.push({key: attribute.attributeId, name: attribute.description})
+      if(attribute.isMultivalue && attribute.isMultivalue !== "false") {
+        columns.push({key: attribute.attributeId, name: attribute.description})
+      }
     });
     columns.push({key: 'quantity', name: "Quantity", editable: true});
     return columns;

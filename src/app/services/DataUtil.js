@@ -24,7 +24,7 @@ export default class DataUtil{
         classificationId: clsId,
         classificationGroupId: clsGrpId
       };
-      jQuery.getJSON(this.contextPath + "/" + DataUtil.ATTRIBUTES_PATH, params, (data) => {DataUtil.attributesCache.push({key: key, list: data});callback(data);})
+      jQuery.getJSON(this.contextPath, params, (data) => {DataUtil.attributesCache.push({key: key, list: data});callback(data);})
     } else {
       callback(attributes)
     }

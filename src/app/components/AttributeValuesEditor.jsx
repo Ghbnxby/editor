@@ -20,7 +20,7 @@ export default class AttributeVasluesEditor extends React.Component{
         <tbody>
         {
           this.props.product.attributeValues.map((attributeValue) => {
-            let attribute  = self.getAttributeById(attributeValue.attributeId);
+            let attribute = self.getAttributeById(attributeValue.attributeId);
             return (
               <tr>
                 <td>{attribute.description}</td>
