@@ -11,5 +11,11 @@
     "isMultivalue": "true",
     "type": "string",
     "options": ["XS", "S", "M", "L", "XL", "XXL", "XXXL"]
+  },
+  {
+      "attributeId": "style",
+      "description": "Style",
+      "isMultivalue": "false",
+      "type": "string"
   }
 ]

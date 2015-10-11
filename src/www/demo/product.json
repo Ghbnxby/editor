@@ -16,17 +16,11 @@
         "attributeValues": [
             {
                 "attributeId": "color",
-                "description": "Color",
-                "value": "yellow",
-                "isMultivalue": "true",
-                "type": "string"
+                "value": "yellow"
             },
             {
                 "attributeId": "size",
-                "description": "Size",
-                "value": "42",
-                "isMultivalue": "true",
-                "type": "string"
+                "value": "42"
             }
 
         ]

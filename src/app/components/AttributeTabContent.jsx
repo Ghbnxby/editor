@@ -8,7 +8,7 @@ export default class AttributeTabContent extends React.Component{
         enableCellSelect={true}
         columns={this.columns}
         rowGetter={this.rowGetter}
-        rowsCount={this.props.product.attributeValues.length}
+        rowsCount={this.props.attributes.length}
         onRowUpdated={this.handleRowUpdated}
         />
     )
@@ -16,6 +16,7 @@ export default class AttributeTabContent extends React.Component{
 
   constructor(props){
     super(props);
+    this.state = {clsId: props.product.classificationId, clsGrpId: props.product.classificationGroupId};
     this.columns = [
       {
         key: 'description',
@@ -35,7 +36,25 @@ export default class AttributeTabContent extends React.Component{
         name: 'Type'
       }
     ];
+    this.mergeAttributeValuesWithAttributes(props);
   }
+
+  componentWillReceiveProps(nextProps){
+    if(this.state.clsId !== nextProps.product.classificationId || this.state.clsGrpId !== nextProps.product.classificationGroupId){
+      this.mergeAttributeValuesWithAttributes(nextProps);
+    }
+  }
+
+  mergeAttributeValuesWithAttributes = (props) => {
+    let {attributes, product} = this.props;
+    let attributeValues = attributes.map( (a) => {
+      let value = product.attributeValues.filter((v) => {return v.attributeId === a.attributeId});
+      if(value.length !==0) value = value[0].value || "";
+      else value = "";
+      return {attributeId: a.attributeId, value: value};
+    });
+    props.updateAttributeValues(attributeValues);
+  };
 
   handleRowUpdated = (e) => {
     //merge updated row with current row and rerender by setting state
@@ -46,7 +65,12 @@ export default class AttributeTabContent extends React.Component{
 
 
   rowGetter = (i) => {
-    return this.props.product.attributeValues[i];
+    let {attributes, product} = this.props;
+    let attribute = attributes[i];
+    let value = product.attributeValues.filter((v) => {return v.attributeId === attribute.attributeId});
+    if(value.length !==0) value = value[0].value || "";
+    else value = "";
+    return Object.assign({}, attribute, {value: value});
   };
 
 }

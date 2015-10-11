@@ -70,10 +70,12 @@ export default class ClassificationTree extends React.Component{
     super(props);
     this.state = {classifications: props.classifications};
     this.dataUtil = new DataUtil(props.contextPath);
+    this.dataUtil.updateAttributes(props.product.classificationId, props.product.classificationGroupId, this.props.updateAttributes);
   }
 
   componentWillReceiveProps(nextProps){
     this.setState({classifications: nextProps.classifications});
+    this.dataUtil.updateAttributes(nextProps.product.classificationId, nextProps.product.classificationGroupId, this.props.updateAttributes);
   }
 
   closeAll = () => {
@@ -139,7 +141,6 @@ export default class ClassificationTree extends React.Component{
 
   updateClsAndClsGrp = (clsId, clsGrpId) => {
     this.props.updateClsIdAndClsGrpId(clsId, clsGrpId);
-    this.dataUtil.updateAttributes(clsId, clsGrpId, this.props.updateAttributes);
   };
 
   checkClassification = (cls) => {
