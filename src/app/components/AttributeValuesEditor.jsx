@@ -3,10 +3,10 @@ import {Table, Input} from "react-bootstrap";
 import AttributeValuesEditorCell from "./AttributeValuesEditorCell.jsx"
 
 
-export default class AttributeVasluesEditor extends React.Component{
+export default class AttributeValuesEditor extends React.Component{
   render(){
     let self = this;
-    let editableCellStyle = {padding: "0"};
+    let editableCellStyle = {};
     return(
       <Table striped bordered condensed hover style={{marginBottom: "0px"}}>
         <thead>
@@ -25,8 +25,8 @@ export default class AttributeVasluesEditor extends React.Component{
               <tr>
                 <td>{attribute.description}</td>
                 <AttributeValuesEditorCell attribute={attribute} values={attributeValue.values} onChange={(values) => {self.updateAttributeValue(attribute.attributeId, values)}}/>
-                <td>{attribute.isMultivalue}</td>
                 <td>{attribute.type}</td>
+                <td>{attribute.isMultivalue}</td>
               </tr>
             )
           })
