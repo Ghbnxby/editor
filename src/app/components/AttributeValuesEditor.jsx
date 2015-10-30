@@ -19,10 +19,10 @@ export default class AttributeValuesEditor extends React.Component{
         </thead>
         <tbody>
         {
-          this.props.product.attributeValues.map((attributeValue) => {
+          this.props.product.attributeValues.map((attributeValue, i) => {
             let attribute = self.getAttributeById(attributeValue.attributeId);
             return (
-              <tr>
+              <tr style={{backgroundColor: i%2 === 0 ? '#eee' : ''}}>
                 <td>{attribute.description}</td>
                 <AttributeValuesEditorCell attribute={attribute} values={attributeValue.values} onChange={(values) => {self.updateAttributeValue(attribute.attributeId, values)}}/>
                 <td>{attribute.type}</td>

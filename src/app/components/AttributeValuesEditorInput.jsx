@@ -18,7 +18,7 @@ export default class AttributeValuesEditor extends React.Component{
     if(!this.state.disabled){
       valueField = (
         <div className="input-group" style={{margin:'0'}} onClick={this.activate} style={{width: '100%'}}>
-          <SimpleInput ref="input" type={this.props.type} value={this.props.values[0]} onBlur={this.deactivate} onChange={this.props.onChange}/>
+          <SimpleInput ref="input" type={this.props.type} attribute={this.props.attribute} value={this.props.values[0]} onBlur={this.deactivate} onChange={this.props.onChange}/>
         </div>
       )
     }

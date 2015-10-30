@@ -20,7 +20,7 @@ export default class MultiValueInput extends React.Component{
                   this.state.values.map((obj, i) => {
                     return (
                       <div className="input-group" style={{margin: "10px"}}>
-                        <SimpleInput key={i} ref={i} value={obj.value} onChange={(val) => self.changeById(val, obj.id)}/>
+                        <SimpleInput key={i} ref={i} attribute={this.props.attribute} value={obj.value} onChange={(val) => self.changeById(val, obj.id)}/>
                         <span className="input-group-btn">
                           <Button bsStyle="link" onClick={() => self.deleteById(obj.id)}>
                             <Glyphicon glyph="remove"/>
@@ -58,7 +58,7 @@ export default class MultiValueInput extends React.Component{
   }
 
   init(values){
-    values = values || [null];
+    values = values && values.length !== 0 ? values : [null];
     values = values.map((value, i) => {return {id: i, value: value}});
     this.state = {
       values: values,

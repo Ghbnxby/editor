@@ -12,31 +12,31 @@
     "type": "string",
     "options": [
         {
-            "value": "xs",
+            "value": "XS",
             "description": "XS"
         },
         {
-            "value": "s",
+            "value": "S",
             "description": "S"
         },
         {
-            "value": "m",
+            "value": "M",
             "description": "M"
         },
         {
-            "value": "l",
+            "value": "L",
             "description": "L"
         },
         {
-            "value": "xl",
+            "value": "XL",
             "description": "XL"
         },
         {
-            "value": "xxl",
+            "value": "XXL",
             "description": "XXL"
         },
         {
-            "value": "xxxl",
+            "value": "XXXL",
             "description": "XXXL"
         }
       ]
