@@ -5,20 +5,24 @@ import SimpleInput from "./inputs/SimpleInput.jsx"
 
 export default class AttributeValuesEditor extends React.Component{
   render(){
-    let valueField = (<span style={{padding: '10px'}}>{this.props.values[0]}</span>);
-    if(!this.state.disabled){
-      valueField = (<SimpleInput ref="input" className="form-control" type={this.props.type} value={this.props.values[0]} onBlur={this.deactivate} onChange={this.props.onChange}/>)
-    }
-    return(
-      <div className="input-group" style={{margin:'0'}} onDoubleClick={this.activate}>
-        {valueField}
+    let valueField = (
+      <div className="input-group" style={{margin:'0'}} onClick={this.activate}>
+        <span style={{padding: '10px'}}>{this.props.values[0]}</span>
         <div className="input-group-btn">
           <Button bsStyle="link" onClick={this.activate}>
             <Glyphicon glyph="edit"/>
           </Button>
         </div>
       </div>
-    )
+    );
+    if(!this.state.disabled){
+      valueField = (
+        <div className="input-group" style={{margin:'0'}} onClick={this.activate} style={{width: '100%'}}>
+          <SimpleInput ref="input" type={this.props.type} value={this.props.values[0]} onBlur={this.deactivate} onChange={this.props.onChange}/>
+        </div>
+      )
+    }
+    return(valueField)
   };
 
 

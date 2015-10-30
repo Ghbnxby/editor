@@ -5,7 +5,7 @@ import {Input, Button, Glyphicon} from "react-bootstrap";
 export default class AttributeValuesEditor extends React.Component{
   render(){
     return(
-      <input ref="child" className="form-control" value={this.props.value} onChange={this.onChange} onBlur={this.props.onBlur}/>
+      <input type='text' {...this.props} ref="child" className="form-control" value={this.props.value} onChange={this.onChange} onBlur={this.props.onBlur}/>
     )
   };
 
