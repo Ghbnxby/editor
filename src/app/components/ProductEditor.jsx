@@ -7,7 +7,6 @@ export default class ProductEditor extends React.Component{
     return(
       <div>
         <ProductEditorTabs {...this.props}/>
-        <ProductEditorToolbar {...this.props}/>
       </div>
     )
   };

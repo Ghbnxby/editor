@@ -8,7 +8,8 @@ import {
   UPDATE_MANUFACTURER,
   UPDATE_PRICE,
   UPDATE_ATTRIBUTEVALUES,
-  UPDATE_QUANTITIES
+  UPDATE_QUANTITIES,
+  UPDATE_PRODUCT
 } from '../actions/product';
 
 const initialState = {
@@ -68,6 +69,8 @@ export default function product(product = initialState, action) {
       return Object.assign({}, product, {
         quantities: action.array
       });
+    case UPDATE_PRODUCT:
+      return Object.assign({}, action.product);
     default:
       return product;
   }

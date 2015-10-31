@@ -38,8 +38,8 @@ export default class PriceTabContent extends React.Component{
   onChangeDiscountType = (e) => {
     if(e.target.value === 'none') {
       let {price} = this.props.product;
-      price.discountPercent = "";
-      price.discountValue = "";
+      price.discountPercent = null;
+      price.discountValue = null;
       this.props.updatePrice(price);
     }
     this.setState({discountType: e.target.value});
@@ -55,9 +55,9 @@ export default class PriceTabContent extends React.Component{
     let {price} = this.props.product;
     if(this.state.discountType === "percent"){
       price.discountPercent = e.target.value;
-      price.discountValue = "";
+      price.discountValue = null;
     } else if(this.state.discountType === "amount") {
-      price.discountPercent = "";
+      price.discountPercent = null;
       price.discountValue = e.target.value;
     }
     this.props.updatePrice(price);

@@ -1,10 +1,11 @@
 import React from "react";
-import {Tabs, Tab} from "react-bootstrap";
+import {Tabs, Tab, Button, ButtonToolbar, Glyphicon} from "react-bootstrap";
 import ProductTabContent from "./ProductTabContent.jsx";
 import PriceTabContent from "./PriceTabContent.jsx";
 import ClassificationTabContent from "./ClassificationTabContent.jsx";
 import AttributeTabContent from "./AttributeTabContent.jsx";
 import QuantityTabContent from "./QuantityTabContent.jsx";
+import AlertModal from "./AlertModal.jsx";
 
 export default class ProductEditorTab extends React.Component{
   render(){
@@ -12,6 +13,7 @@ export default class ProductEditorTab extends React.Component{
     let attributeTab;
     if(this.state.key === 5) quantityTab = <QuantityTabContent {...this.props}/>;
     if(this.state.key === 4) attributeTab = <AttributeTabContent {...this.props}/>;
+    let buttonStyle = {marginBottom: "5px", marginTop: "5px"};
     return (
       <div>
         <Tabs activeKey={this.state.key} onSelect={this.handleSelect} animation={false}>
@@ -27,6 +29,17 @@ export default class ProductEditorTab extends React.Component{
         <div className="col-md-12" style={{paddingLeft: "0px"}}>
           {quantityTab}
         </div>
+        <div className="col-sm-12" style={{backgroundColor: "#D3D3D3"}}>
+          <div className="pull-right">
+            <ButtonToolbar>
+              <Button bsStyle="link" style={buttonStyle}>Cancel</Button>
+              <Button style={buttonStyle}><Glyphicon glyph="duplicate"/> Duplicate</Button>
+              <Button style={buttonStyle}><Glyphicon glyph="trash"/> Delete</Button>
+              <Button bsStyle="primary" style={buttonStyle} onClick={this.handleSave}><Glyphicon glyph="save"/> Save</Button>
+            </ButtonToolbar>
+          </div>
+        </div>
+        <AlertModal ref='alert'/>
       </div>
     );
   };
@@ -38,10 +51,19 @@ export default class ProductEditorTab extends React.Component{
 
   constructor(props){
     super(props);
-    this.state = {key: 1};
+    this.state = {key: 1, product: JSON.parse(JSON.stringify(props.product))};
   }
 
   handleSelect = (key) => {
-    this.setState({key: key});
+    if(JSON.stringify(this.state.product) !== JSON.stringify(this.props.product) && this.state.key !== key){
+      this.refs.alert.show(() => {this.props.updateProduct(JSON.parse(JSON.stringify(this.state.product)));this.setState({key: key})}, null);
+    } else {
+      this.setState({key: key});
+    }
+  };
+
+  handleSave = () => {
+    console.log(this.props);
+    this.setState({product: JSON.parse(JSON.stringify(this.props.product))});
   };
 }

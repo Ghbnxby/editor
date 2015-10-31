@@ -8,6 +8,7 @@ export const UPDATE_DESCRIPTION = "UPDATE_DESCRIPTION";
 export const UPDATE_LONGDESCRIPTION = "UPDATE_LONGDESCRIPTION";
 export const UPDATE_STATUSID = "UPDATE_STATUS";
 export const UPDATE_QUANTITIES = "UPDATE_QUANTITIES";
+export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 
 export function updateProductId(value) {
   return {type: UPDATE_PRODUCTID, value: value};
@@ -47,4 +48,8 @@ export function updateStatusId(value) {
 
 export function updateQuantities(array) {
   return {type: UPDATE_QUANTITIES, array: array};
+}
+
+export function updateProduct(product) {
+  return {type: UPDATE_PRODUCT, product: product};
 }
