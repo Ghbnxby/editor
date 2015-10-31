@@ -7,7 +7,7 @@ export default class ClassificationTree extends React.Component{
   renderNode = (classificationGroups, level) => {
     level = level + 1;
     let self = this;
-    let style = {borderLeftWidth: (10 * level) + "px"};
+    let style = {borderLeftWidth: (10 * level) + "px", padding: 0};
     if(!classificationGroups || classificationGroups.length === 0) return null;
     return(
       <div className="list-unstyled">
@@ -15,20 +15,23 @@ export default class ClassificationTree extends React.Component{
           classificationGroups.map((classificationGroup) => {
             let node;
             let glyphicon;
-            let className = "list-group-item";
+            let isSelected = false;
             if(classificationGroup.show) node = self.renderNode(classificationGroup.classificationGroups, level);
             if(classificationGroup.classificationGroups){
               glyphicon = (
-                <Button onClick={() => {self.updateClassificationGroup(classificationGroup)}} style={{width: '10%'}}>
+                <Button onClick={() => {self.updateClassificationGroup(classificationGroup)}} style={{width: '8%', padding: '10px 15px', border: 'none'}}>
                   <Glyphicon key={"g" + classificationGroup.classificationGroupId} glyph={classificationGroup.show ? "menu-down" : "menu-right"}/>
                 </Button>);
             }
-            if(classificationGroup.classificationGroupId === self.props.product.classificationGroupId) className = className + " " + "list-group-item-info selected";
+            if(classificationGroup.classificationGroupId === self.props.product.classificationGroupId) {
+              isSelected = true;
+            }
             return(
               <div key={"d" + classificationGroup.classificationGroupId}>
-                <li key={"b" + classificationGroup.classificationGroupId} className={className} style={style}>
+                <li key={"b" + classificationGroup.classificationGroupId} className="list-group-item" style={isSelected ? Object.assign({} ,style, {borderLeftColor: "#337ab7"}) : style}>
                   {glyphicon}
-                  <Button onClick={() => {self.updateClsAndClsGrp(classificationGroup.classificationId, classificationGroup.classificationGroupId)}} style={{width: '90%'}}>
+                  <Button onClick={() => {self.updateClsAndClsGrp(classificationGroup.classificationId, classificationGroup.classificationGroupId)}}
+                          style={{width: glyphicon ? '92%' : '100%', padding: '10px 15px', borderWidth: '0px', borderLeftWidth: '1px', backgroundColor: isSelected ? "#d9edf7" : ''}}>
                     {classificationGroup.description}
                   </Button>
                 </li>
@@ -49,21 +52,24 @@ export default class ClassificationTree extends React.Component{
           this.state.classifications.map((classification) => {
             let node;
             let glyphicon;
-            let className = "list-group-item";
+            let isSelected = false;
             if(classification.show) node = self.renderNode(classification.classificationGroups, 0);
             if(classification.classificationGroups){
               glyphicon = (
-                <Button  onClick={() => self.updateClassification(classification)} style={{width: '10%'}}>
+                <Button  onClick={() => self.updateClassification(classification)} style={{width: '8%', padding: '10px 15px', border: 'none'}}>
                   <Glyphicon glyph={classification.show ? "menu-down" : "menu-right"}/>
                 </Button>
               );
             }
-            if(this.checkClassification(classification)) className = className + " " + "list-group-item-info selected";
+            if(this.checkClassification(classification)) {
+              isSelected = true;
+            }
             return(
               <div key={"d" + classification.classificationId}>
-                <li className={className}>
+                <li className="list-group-item" style={{padding: 0, borderLeftColor: isSelected ? "#337ab7" : ''}}>
                   {glyphicon}
-                  <Button onClick={() => self.updateClsAndClsGrp(classification.classificationId, "")} style={{width: '90%'}}>
+                  <Button onClick={() => self.updateClsAndClsGrp(classification.classificationId, "")}
+                          style={{width: glyphicon ? '92%' : '100%', padding: '10px 15px', borderWidth: '0px', borderLeftWidth: '1px', backgroundColor: isSelected ? "#d9edf7" : ''}}>
                     {classification.description}
                   </Button>
                 </li>
