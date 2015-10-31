@@ -2,8 +2,8 @@
     "product": {
         "productId": "glass2015_1",
         "catalogId": "winter2015",
-        "classificationId": "accesuar",
-        "classificationGroupId": "glass",
+        "classificationId": "clothing",
+        "classificationGroupId": "normal-jeans",
         "statusId": "new",
         "manufacturer": "nike",
         "description": "short",

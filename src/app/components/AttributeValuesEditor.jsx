@@ -6,7 +6,6 @@ import AttributeValuesEditorCell from "./AttributeValuesEditorCell.jsx"
 export default class AttributeValuesEditor extends React.Component{
   render(){
     let self = this;
-    let editableCellStyle = {};
     return(
       <Table striped bordered condensed hover style={{marginBottom: "0px"}}>
         <thead>
@@ -55,7 +54,6 @@ export default class AttributeValuesEditor extends React.Component{
 
   updateAttributeValue(id, values){
     let {attributeValues} = this.props.product;
-    console.log(attributeValues);
     let attributeValue = attributeValues.filter((v) => {return v.attributeId === id})[0]
     let index = attributeValues.indexOf(attributeValue);
     attributeValues[index] = {attributeId: id, values: values};

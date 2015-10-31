@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDataGrid from "react-data-grid/addons.js";
 import {Toolbar} from "react-data-grid/addons.js";
+import QuantitiesService from "../services/QuantitiesService.js";
+import utils from "underscore";
 
 var AutoComplete = ReactDataGrid.Editors.AutoComplete;
 
@@ -21,6 +23,8 @@ export default class QuantityTabContent extends React.Component{
   constructor(props){
     super(props);
     let columns = this.initColumns(props.product.attributeValues);
+    let validQuantities = QuantitiesService.getValidQuantities(props.product.quantities, props.product.attributeValues);
+    this.props.updateQuantities(validQuantities);
     this.state = {columns: columns};
   }
 
@@ -48,23 +52,27 @@ export default class QuantityTabContent extends React.Component{
   };
 
   handleRowUpdated = (e) => {
-    let {quantities} = this.props.product;
-    let quantity = quantities[e.rowIdx];
-    let row = e.updated;
-    console.log(quantities);
-    console.log(row);
-    quantity.quantity = row.quantity || quantity.quantity;
-    console.log(quantity);
-    delete row.quantity;
-    Object.assign(quantity.properties, row);
-    console.log(quantity);
-    console.log(quantities);
-    this.props.updateQuantities(quantities);
+    if((e.updated.quantity !== undefined) || this.checkValue(e.cellKey, e.updated[e.cellKey] )) {
+      let {quantities} = this.props.product;
+      let quantity = quantities[e.rowIdx];
+      let row = e.updated;
+      quantity.quantity = row.quantity || quantity.quantity;
+      delete row.quantity;
+      Object.assign(quantity.properties, row);
+      this.props.updateQuantities(quantities);
+    }
+  };
+
+  checkValue = (attributeId, value) => {
+    let attributeValue = this.getAttributeValueById(attributeId);
+    if(attributeValue) {
+      return utils.contains(attributeValue.values, value);
+    }
+    return false;
   };
 
   rowGetter = (i) => {
     let {quantities} = this.props.product;
-    console.log(Object.assign({}, {quantity: quantities[i].quantity || 0}, quantities[i].properties));
     return Object.assign({}, {quantity: quantities[i].quantity || 0}, quantities[i].properties);
   };
 
@@ -80,11 +88,16 @@ export default class QuantityTabContent extends React.Component{
     });
     Object.assign(newRow, {properties: properties});
     quantities.push(newRow);
-    console.log(quantities);
     this.props.updateQuantities(quantities);
   };
 
   getAttributeById = (id) => {
-    return this.props.attributes.filter((a) => {return a.attributeId === id})[0]
-  }
+    return this.props.attributes.filter((a) => {return a.attributeId === id})[0];
+  };
+
+  getAttributeValueById = (id) => {
+    let attributeValue = this.props.product.attributeValues.filter((a) => {return a.attributeId === id});
+    attributeValue = ((attributeValue.length > 0) ? attributeValue[0] : null);
+    return attributeValue;
+  };
 }

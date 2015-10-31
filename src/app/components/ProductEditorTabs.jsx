@@ -11,14 +11,14 @@ export default class ProductEditorTab extends React.Component{
     let quantityTab;
     let attributeTab;
     if(this.state.key === 5) quantityTab = <QuantityTabContent {...this.props}/>;
-    if(this.state.key === 3) attributeTab = <AttributeTabContent {...this.props}/>;
+    if(this.state.key === 4) attributeTab = <AttributeTabContent {...this.props}/>;
     return (
       <div>
         <Tabs activeKey={this.state.key} onSelect={this.handleSelect} animation={false}>
           <Tab eventKey={1} title={<h4>Product</h4>}><ProductTabContent {...this.props}/></Tab>
-          <Tab eventKey={2} title={<h4>Classification</h4>}><ClassificationTabContent {...this.props}/></Tab>
-          <Tab eventKey={3} title={<h4>Attributes</h4>}/>
-          <Tab eventKey={4} title={<h4>Price</h4>}><PriceTabContent {...this.props}/></Tab>
+          <Tab eventKey={2} title={<h4>Price</h4>}><PriceTabContent {...this.props}/></Tab>
+          <Tab eventKey={3} title={<h4>Classification</h4>}><ClassificationTabContent {...this.props}/></Tab>
+          <Tab eventKey={4} title={<h4>Attributes</h4>}/>
           <Tab eventKey={5} title={<h4>Quantity</h4>}/>
         </Tabs>
         <div className="col-md-12" style={{paddingLeft: "0px", paddingRight: "0px"}}>
