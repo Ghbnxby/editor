@@ -7,7 +7,8 @@ import {
   UPDATE_LONGDESCRIPTION,
   UPDATE_MANUFACTURER,
   UPDATE_PRICE,
-  UPDATE_ATTRIBUTEVALUES
+  UPDATE_ATTRIBUTEVALUES,
+  UPDATE_QUANTITIES
 } from '../actions/product';
 
 const initialState = {
@@ -20,7 +21,8 @@ const initialState = {
   longDescription: "",
   manufacturer: "",
   price : {},
-  attributeValues: []
+  attributeValues: [],
+  quantities: []
 };
 
 export default function product(product = initialState, action) {
@@ -61,6 +63,10 @@ export default function product(product = initialState, action) {
     case UPDATE_ATTRIBUTEVALUES:
       return Object.assign({}, product, {
         attributeValues: action.array
+      });
+    case UPDATE_QUANTITIES:
+      return Object.assign({}, product, {
+        quantities: action.array
       });
     default:
       return product;

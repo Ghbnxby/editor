@@ -10,7 +10,7 @@ export default class MultiValueInput extends React.Component{
     return(
       <Modal show={this.state.show} onHide={this.close}>
         <Modal.Header closeButton>
-          <Modal.Title>Multi Value Editor</Modal.Title>
+          <Modal.Title>{this.props.attribute.description || this.props.attribute.attributeId}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <table className='table'>
