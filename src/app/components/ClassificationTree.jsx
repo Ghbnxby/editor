@@ -174,6 +174,7 @@ export default class ClassificationTree extends React.Component{
 
   updateClsAndClsGrp = (clsId, clsGrpId) => {
     this.props.updateClsIdAndClsGrpId(clsId, clsGrpId);
+
   };
 
   checkClassification = (cls) => {

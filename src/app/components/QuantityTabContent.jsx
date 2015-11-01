@@ -23,8 +23,6 @@ export default class QuantityTabContent extends React.Component{
   constructor(props){
     super(props);
     let columns = this.initColumns(props.product.attributeValues);
-    let validQuantities = QuantitiesService.getValidQuantities(props.product.quantities, props.product.attributeValues);
-    this.props.updateQuantities(validQuantities);
     this.state = {columns: columns};
   }
 

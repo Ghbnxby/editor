@@ -25,8 +25,11 @@
             {
                 "attributeId": "style",
                 "values": ["Los"]
+            },
+            {
+                "attributeId":"season",
+                "values":[]
             }
-
         ],
         "quantities": []
     }

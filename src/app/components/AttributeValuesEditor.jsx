@@ -1,6 +1,7 @@
 import React from "react";
 import {Table, Input} from "react-bootstrap";
-import AttributeValuesEditorCell from "./AttributeValuesEditorCell.jsx"
+import AttributeValuesEditorCell from "./AttributeValuesEditorCell.jsx";
+import AttributeService from "../services/AttributeService.js";
 
 
 export default class AttributeValuesEditor extends React.Component{
@@ -43,18 +44,18 @@ export default class AttributeValuesEditor extends React.Component{
   constructor(props){
     super(props);
     this.state = {clsId: props.product.classificationId, clsGrpId: props.product.classificationGroupId};
-    this.mergeAttributeValuesWithAttributes(props);
+    //this.mergeAttributeValuesWithAttributes(props);
   }
 
   componentWillReceiveProps(nextProps){
     if(this.state.clsId !== nextProps.product.classificationId || this.state.clsGrpId !== nextProps.product.classificationGroupId){
-      this.mergeAttributeValuesWithAttributes(nextProps);
+      //this.mergeAttributeValuesWithAttributes(nextProps);
     }
   }
 
   updateAttributeValue(id, values){
     let {attributeValues} = this.props.product;
-    let attributeValue = attributeValues.filter((v) => {return v.attributeId === id})[0]
+    let attributeValue = attributeValues.filter((v) => {return v.attributeId === id})[0];
     let index = attributeValues.indexOf(attributeValue);
     attributeValues[index] = {attributeId: id, values: values};
     this.props.updateAttributeValues(attributeValues);
@@ -62,12 +63,7 @@ export default class AttributeValuesEditor extends React.Component{
 
   mergeAttributeValuesWithAttributes = (props) => {
     let {attributes, product} = this.props;
-    let attributeValues = attributes.map( (a) => {
-      let values = product.attributeValues.filter((v) => {return v.attributeId === a.attributeId});
-      if(values.length !==0) values = values[0].values;
-      else values = [];
-      return {attributeId: a.attributeId, values: values};
-    });
+    let attributeValues = AttributeService.mergeAttributeValuesWithAttributes(attributes, product.attributeValues);
     props.updateAttributeValues(attributeValues);
   };
 

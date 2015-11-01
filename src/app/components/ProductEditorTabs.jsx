@@ -6,6 +6,8 @@ import ClassificationTabContent from "./ClassificationTabContent.jsx";
 import AttributeTabContent from "./AttributeTabContent.jsx";
 import QuantityTabContent from "./QuantityTabContent.jsx";
 import AlertModal from "./AlertModal.jsx";
+import QuantitiesService from "../services/QuantitiesService.js";
+import AttributeService from "../services/AttributeService.js";
 
 export default class ProductEditorTab extends React.Component{
   render(){
@@ -55,6 +57,9 @@ export default class ProductEditorTab extends React.Component{
   }
 
   handleSelect = (key) => {
+    this.synchronizeTabs();
+    console.log(JSON.stringify(this.state.product));
+    console.log(JSON.stringify(this.props.product));
     if(JSON.stringify(this.state.product) !== JSON.stringify(this.props.product) && this.state.key !== key){
       this.refs.alert.show(() => {this.props.updateProduct(JSON.parse(JSON.stringify(this.state.product)));this.setState({key: key})}, null);
     } else {
@@ -63,7 +68,14 @@ export default class ProductEditorTab extends React.Component{
   };
 
   handleSave = () => {
-    console.log(this.props);
+    this.synchronizeTabs();
     this.setState({product: JSON.parse(JSON.stringify(this.props.product))});
   };
+
+  synchronizeTabs = () => {
+    let filteredAttributeValues = AttributeService.mergeAttributeValuesWithAttributes(this.props.attributes, this.props.product.attributeValues);
+    this.props.updateAttributeValues(filteredAttributeValues);
+    let filteredQuantities = QuantitiesService.getValidQuantities(this.props.product.quantities, filteredAttributeValues);
+    this.props.updateQuantities(filteredQuantities);
+  }
 }
