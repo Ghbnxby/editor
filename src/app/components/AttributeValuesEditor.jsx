@@ -41,18 +41,6 @@ export default class AttributeValuesEditor extends React.Component{
     attributeValues: React.PropTypes.array
   };
 
-  constructor(props){
-    super(props);
-    this.state = {clsId: props.product.classificationId, clsGrpId: props.product.classificationGroupId};
-    //this.mergeAttributeValuesWithAttributes(props);
-  }
-
-  componentWillReceiveProps(nextProps){
-    if(this.state.clsId !== nextProps.product.classificationId || this.state.clsGrpId !== nextProps.product.classificationGroupId){
-      //this.mergeAttributeValuesWithAttributes(nextProps);
-    }
-  }
-
   updateAttributeValue(id, values){
     let {attributeValues} = this.props.product;
     let attributeValue = attributeValues.filter((v) => {return v.attributeId === id})[0];

@@ -8,6 +8,9 @@ import QuantityTabContent from "./QuantityTabContent.jsx";
 import AlertModal from "./AlertModal.jsx";
 import QuantitiesService from "../services/QuantitiesService.js";
 import AttributeService from "../services/AttributeService.js";
+import ProductService from "../services/ProductService.js";
+import jQuery from "jquery";
+import DataUtil from "../services/DataUtil";
 
 export default class ProductEditorTab extends React.Component{
   render(){
@@ -54,13 +57,12 @@ export default class ProductEditorTab extends React.Component{
   constructor(props){
     super(props);
     this.state = {key: 1, product: JSON.parse(JSON.stringify(props.product))};
+    this.dataUtil = new DataUtil(props.contextPath);
   }
 
   handleSelect = (key) => {
     this.synchronizeTabs();
-    console.log(JSON.stringify(this.state.product));
-    console.log(JSON.stringify(this.props.product));
-    if(JSON.stringify(this.state.product) !== JSON.stringify(this.props.product) && this.state.key !== key){
+    if(this.state.key !== key && JSON.stringify(ProductService.getFilteredProduct(this.state.product)) !== JSON.stringify(ProductService.getFilteredProduct(this.props.product))){
       this.refs.alert.show(() => {this.props.updateProduct(JSON.parse(JSON.stringify(this.state.product)));this.setState({key: key})}, null);
     } else {
       this.setState({key: key});
@@ -69,7 +71,9 @@ export default class ProductEditorTab extends React.Component{
 
   handleSave = () => {
     this.synchronizeTabs();
-    this.setState({product: JSON.parse(JSON.stringify(this.props.product))});
+    let productStr = JSON.stringify(this.props.product);
+    this.dataUtil.saveProduct(productStr);
+    this.setState({product: JSON.parse(productStr)});
   };
 
   synchronizeTabs = () => {

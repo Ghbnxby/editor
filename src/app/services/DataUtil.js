@@ -2,7 +2,8 @@ import jQuery from "jquery";
 
 export default class DataUtil{
   static CLSGRP_SUFFIX = "clsgrp_";
-  static ATTRIBUTES_PATH = "productEditor/attributes";
+  static ATTRIBUTES_PATH = "/productEditor/attributes";
+  static PRODUCT_PATH = "/productEditor/save";
   static attributesCache = [];
 
   constructor(contextPath){
@@ -24,9 +25,16 @@ export default class DataUtil{
         classificationId: clsId,
         classificationGroupId: clsGrpId
       };
-      jQuery.getJSON(this.contextPath, params, (data) => {DataUtil.attributesCache.push({key: key, list: data});callback(data);})
+      jQuery.getJSON(this.contextPath + DataUtil.ATTRIBUTES_PATH, params, (data) => {DataUtil.attributesCache.push({key: key, list: data});callback(data);})
     } else {
       callback(attributes)
     }
   };
+
+  saveProduct(productString){
+    jQuery.post(
+      this.contextPath + DataUtil.PRODUCT_PATH,
+      {productJSON: productString}
+    );
+  }
 }
