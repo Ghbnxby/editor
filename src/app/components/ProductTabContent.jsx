@@ -1,24 +1,38 @@
 import React from "react";
-import {Input} from "react-bootstrap";
+import {Input, OverlayTrigger, Popover} from "react-bootstrap";
+
+class ProductInput extends React.Component{
+  render(){
+    let {field, type, onChange, product, errors, label} = this.props;
+    if(errors[field]){
+      return(
+        <OverlayTrigger trigger="focus" placement="bottom" overlay={<Popover className="text-danger">{errors[field]}</Popover>}>
+          <Input type={type} label={label} value={product[field]} onChange={onChange} bsStyle= "error"/>
+        </OverlayTrigger>
+      );
+    }
+    return(<Input type={type} label={label} value={product[field]} onChange={onChange}/>);
+  }
+}
 
 export default class ProductTabContent extends React.Component{
   render(){
-    let {product} = this.props;
+    let {product, errors} = this.props;
     return(
       <div style={{marginTop: "20px"}}>
         <div className="col-sm-6">
-          <Input type="text" label="ProductId" value={product.productId} onChange={this.changeProductId}/>
-          <Input type="text" label="Catalog" value={product.catalogId} onChange={this.changeCatalogId}/>
-          <Input type="text" label="Manufacture" value={product.manufacturer} onChange={this.changeManufacturer}/>
-          <Input type="select" label="Status" value={product.statusId} onChange={this.changeStatusId}>
+          <ProductInput {...this.props} type="text" label="ProductId" field="productId" onChange={this.changeProductId}/>
+          <ProductInput {...this.props} type="text" label="Catalog" field="catalogId" onChange={this.changeCatalogId}/>
+          <ProductInput {...this.props} type="text" label="Manufacture" field="manufacturer" onChange={this.changeManufacturer}/>
+          <Input type="select" label="Status" value={product.statusId} onChange={this.changeStatusId} bsStyle={errors.statusId ? "error" : ""}>
             <option value="new">New</option>
             <option value="active">Active</option>
             <option value="old">Old</option>
           </Input>
         </div>
         <div className="col-sm-6">
-          <Input type="textarea" label="Description" value={product.description} onChange={this.changeDescription}/>
-          <Input type="textarea" label="Long Description" value={product.longDescription} onChange={this.changeLongDescription}/>
+          <ProductInput {...this.props} type="textarea" label="Description"  field="description" onChange={this.changeDescription}/>
+          <ProductInput {...this.props} type="textarea" label="Long Description" field="longDescription" onChange={this.changeLongDescription}/>
         </div>
       </div>
     )

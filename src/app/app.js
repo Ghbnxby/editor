@@ -5,6 +5,10 @@ import configureStore from './store/configureStore';
 
 function renderProductEditor(element, props){
   let {product, classifications} = props.data;
+  if(props.mode === 'create'){
+    product = {price:{}, attributeValues: [], options:[]};
+  }
+
   let initialState = {product, classifications};
   let store = configureStore(initialState);
   return React.render(

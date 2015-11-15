@@ -31,10 +31,12 @@ export default class DataUtil{
     }
   };
 
-  saveProduct(productString){
+  saveProduct(productString, mode, onSuccess, onError, onLoad){
+    onLoad();
     jQuery.post(
       this.contextPath + DataUtil.PRODUCT_PATH,
-      {productJSON: productString}
-    );
+      {productJSON: productString, mode: mode}
+    ).done((params) => {onSuccess(params.errors)})
+     .fail(onError);
   }
 }
